@@ -10,6 +10,14 @@ services:
       - ./backend/app:/code/app
     environment:
       - PYTHONPATH=/code
+      - DATABASE_URL=postgresql://financeflow:financeflow123@db:5432/financeflow
+      - GOOGLE_CLIENT_ID=${GOOGLE_CLIENT_ID}
+      - GOOGLE_CLIENT_SECRET=${GOOGLE_CLIENT_SECRET}
+      - OPENAI_API_KEY=${OPENAI_API_KEY}
+      - NEXTAUTH_SECRET=your-secret-key-here-change-in-production
+    depends_on:
+      db:
+        condition: service_healthy
     restart: unless-stopped
     healthcheck:
       test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
@@ -17,3 +25,46 @@ services:
       timeout: 10s
       retries: 3
       start_period: 40s
+    networks:
+      - financeflow-network
+
+  frontend:
+    build: ./frontend
+    ports:
+      - "5173:5173"
+    environment:
+      - NODE_ENV=production
+      - NEXTAUTH_URL=http://localhost:5173
+    volumes:
+      - ./frontend:/app/frontend
+    restart: unless-stopped
+    networks:
+      - financeflow-network
+
+  db:
+    image: postgres:15-alpine
+    environment:
+      - POSTGRES_DB=financeflow
+      - POSTGRES_USER=financeflow
+      - POSTGRES_PASSWORD=financeflow123
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U financeflow -d financeflow"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - financeflow-network
+
+networks:
+  financeflow-network:
+    driver: bridge
+
+volumes:
+  postgres-data:
+    driver: local
+
