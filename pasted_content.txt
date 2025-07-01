@@ -1,0 +1,101 @@
+🔐 CONTEXTO GERAL:
+
+Estás a assumir o controlo temporário do sistema CR_SET FULLSTACK — nome de código “CRSET_PROD_FINAL”.
+
+Este projeto é um SaaS fullstack containerizado, com:
+
+- Frontend em React + Vite + Tailwind + shadcn/ui
+- Backend em FastAPI com JWT e rotas protegidas
+- Docker configurado para ambos
+- Stripe integrado para pagamentos reais
+- Supabase como base de dados e autenticação
+- EmailJS ou Resend preparados para nutrição de leads
+- Mascotes visuais com lógica UX contextual (Boris, Laya, Irina)
+
+Objetivo: Entregar um produto visualmente marcante, funcional, escalável e vendável como WhiteLabel ou SaaS.
+
+---
+
+📦 ÚLTIMOS UPDATES EXECUTADOS (até 29/06 23h59):
+
+- Build Docker do frontend: ✅
+- Build Docker do backend (FastAPI + JWT): ✅
+- Comunicação entre containers testada: ✅
+- Frontend e Backend a correr em `localhost:3000` e `:8000`: ✅
+- Variáveis `.env.production` geradas para Railway + Vercel: ✅
+- Stripe já integrado com chaves reais: ✅
+- Supabase funcional com URL + anon key: ✅
+- EmailJS pronto a ativar (subscrição pendente)
+- Repositório GitHub `crset-fullstack-final` a ser preparado com branch `crset-design-final`
+- Layout sci-fi + mascotes em fase final de integração visual
+
+---
+
+🎯 INSTRUÇÕES PARA O MANUS:
+
+1. **Valida estrutura técnica do repositório (frontend/backend)**
+2. **Confirma que os `.env.production` estão prontos para deploy**
+3. **Gera preview estático do frontend com as mascotes ativadas**
+4. **Simula deploy no Railway com os containers**
+5. **Testa envio de dados para Supabase e webhook do Stripe**
+6. **Confirma que as mascotes aparecem por rota:**
+   - `/`: Laya (onboarding)
+   - `/dashboard`: Irina (análise)
+   - `/login` sem token: Boris (segurança)
+
+---
+
+💡 PLANO DE STRESS TEST PARA OS 300 CRÉDITOS:
+
+**Objetivo:** Avaliar se o Manus consegue executar ações encadeadas com dependências técnicas e visuais.
+
+### 🔥 PLANO DE EXECUÇÃO:
+
+🧪 Etapa 1 – **Build & Deploy**
+- Fazer `build` completo do projeto com Docker Compose
+- Subir para Railway (mock/test)
+- Validar o health check das rotas
+
+🧪 Etapa 2 – **Simular ciclo de lead**
+- Enviar POST para `/lead` com dados fictícios
+- Validar envio automático de email (via EmailJS/Resend)
+- Criar entrada no Supabase com marca temporal
+
+🧪 Etapa 3 – **Ativação das mascotes**
+- Abrir frontend
+- Forçar login falso
+- Verificar se:
+  - Laya aparece na homepage
+  - Boris bloqueia acesso ao dashboard sem token
+  - Irina aparece pós-login com feedback contextual
+
+🧪 Etapa 4 – **Stripe stress**
+- Gerar 3 checkouts com valores diferentes
+- Validar retorno de webhook no backend
+- Verificar Supabase para registo de pagamento
+
+🧪 Etapa 5 – **Reporting**
+- Gerar log final com:
+  - Prints (ou simulação) das etapas
+  - Tempo gasto
+  - Créditos consumidos
+  - Falhas encontradas
+
+---
+
+🧠 MODO DE EXECUÇÃO:  
+Executa este plano em background com prioridade **alta**.  
+Interrompe se atingir 250 créditos para avaliação humana.  
+Se falhar algum ponto, regista **motivo técnico + timestamp**.
+
+---
+
+📣 Output esperado:
+- ✅ Log de execução completo
+- ✅ Confirmação de deploy ou causa de falha
+- ✅ Confirmação visual das mascotes ativadas
+- ✅ Execução encadeada sem necessidade de intervenção humana
+
+---
+
+⚠️ MANUS: se fores capaz de executar isto, passas a operar como executor ativo nas fases FinanceFlow, CRSET SalesBot e onboarding de clientes white-label.

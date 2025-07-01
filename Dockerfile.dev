@@ -1,0 +1,28 @@
+# Dockerfile para desenvolvimento
+FROM node:18-alpine
+
+WORKDIR /app
+
+# Instalar dependências do sistema
+RUN apk add --no-cache libc6-compat postgresql-client
+
+# Copiar ficheiros de dependências
+COPY package*.json ./
+COPY yarn.lock* ./
+
+# Instalar dependências
+RUN npm install
+
+# Copiar código fonte
+COPY . .
+
+# Gerar cliente Prisma
+RUN npx prisma generate
+
+# Expor porta
+EXPOSE 3000
+EXPOSE 9229
+
+# Comando padrão
+CMD ["npm", "run", "dev"]
+
